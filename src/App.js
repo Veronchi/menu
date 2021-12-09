@@ -14,6 +14,13 @@ function App() {
           <div className='underline'></div>
         </div>
         <Categories />
+        <div className='section-center'>
+          {menuItems.map((menuItem) => {
+            return (
+              <Menu key={menuItem.id} {...menuItem} />
+            );
+          })}
+        </div>
       </section>
     </main>
   );
