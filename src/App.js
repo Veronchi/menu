@@ -6,6 +6,16 @@ import items from './data';
 function App() {
   const [menuItems, setMenuItems] = useState(items);
 
+  const changeCategory = (categoryType) => {
+    // if(categoryType === 'all') return
+
+    let neededCategory = menuItems.filter((item) => {
+      return item.category === categoryType;
+    })
+    
+    setMenuItems(neededCategory);
+  }
+
   return (
     <main>
       <section className='menu section'>
@@ -13,7 +23,7 @@ function App() {
           <h2>our menu</h2>
           <div className='underline'></div>
         </div>
-        <Categories />
+        <Categories changeCategory={changeCategory}/>
         <div className='section-center'>
           {menuItems.map((menuItem) => {
             return (
