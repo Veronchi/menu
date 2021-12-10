@@ -7,13 +7,16 @@ function App() {
   const [menuItems, setMenuItems] = useState(items);
 
   const changeCategory = (categoryType) => {
-    // if(categoryType === 'all') return
+    if (categoryType === 'all') {
+      setMenuItems(items);
+    }
+    else {
+      let neededCategory = items.filter((item) => {
+        return item.category === categoryType;
+      });
 
-    let neededCategory = menuItems.filter((item) => {
-      return item.category === categoryType;
-    })
-    
-    setMenuItems(neededCategory);
+      setMenuItems(neededCategory);
+    }
   }
 
   return (
@@ -23,7 +26,7 @@ function App() {
           <h2>our menu</h2>
           <div className='underline'></div>
         </div>
-        <Categories changeCategory={changeCategory}/>
+        <Categories changeCategory={changeCategory} />
         <div className='section-center'>
           {menuItems.map((menuItem) => {
             return (
